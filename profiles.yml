@@ -1,0 +1,27 @@
+pagila:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "0.0.0.0"
+      user: gregory
+      password: mypassword
+      port: 5432
+      dbname: postgres
+      schema: dbt_gregory
+      threads: 1
+      keepalives_idle: 0 # default 0, indicating the system default. See below
+      connect_timeout: 10 # default 10 seconds
+      retries: 1  # default 1 retry on error/timeout when opening connections
+    prod:
+      type: postgres
+      host: "0.0.0.0"
+      user: gregory
+      password: mypassword
+      port: 5432
+      dbname: analytics
+      schema: production
+      threads: 1
+      keepalives_idle: 0 # default 0, indicating the system default. See below
+      connect_timeout: 10 # default 10 seconds
+      retries: 1  # default 1 retry on error/timeout when opening connections
