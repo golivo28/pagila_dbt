@@ -24,13 +24,29 @@ sources:
       - name: address
         columns:
           - name: address_id
+            description: '{{ doc("address__address_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: address
+            description: '{{ doc("address__address") }}'
           - name: address2
+            description: '{{ doc("address__address2") }}'
           - name: district
+            description: '{{ doc("address__district") }}'
           - name: city_id
+            description: '{{ doc("address__city_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "city") }}'
+                  field: city_id
           - name: postal_code
+            description: '{{ doc("address__postal_code") }}'
           - name: phone
+            description: '{{ doc("address__phone") }}'
           - name: last_update
+            description: '{{ doc("address__last_update") }}'
 
       - name: category
         columns:
