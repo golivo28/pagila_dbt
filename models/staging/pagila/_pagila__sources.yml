@@ -6,16 +6,20 @@ sources:
       - name: actor
         columns:
           - name: actor_id
+            description: '{{ doc("actor__actor_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: first_name
+            tests:
+              - is_upper_case
+            description: '{{ doc("actor__first_name") }}'
           - name: last_name
+            tests:
+              - is_upper_case
+            description: '{{ doc("actor__last_name") }}'
           - name: last_update
-
-      - name: actor_info
-        columns:
-          - name: actor_id
-          - name: first_name
-          - name: last_name
-          - name: film_info
+            description: '{{ doc("actor__last_update") }}'
 
       - name: address
         columns:
