@@ -2,8 +2,10 @@ version: 2
 
 sources:
   - name: pagila
+    description: '{{ doc("pagila") }}'
     tables:
       - name: actor
+        description: '{{ doc("actor") }}'
         columns:
           - name: actor_id
             description: '{{ doc("actor__actor_id") }}'
@@ -11,17 +13,18 @@ sources:
               - not_null
               - unique
           - name: first_name
-            tests:
-              - is_upper_case
             description: '{{ doc("actor__first_name") }}'
-          - name: last_name
             tests:
               - is_upper_case
+          - name: last_name
             description: '{{ doc("actor__last_name") }}'
+            tests:
+              - is_upper_case
           - name: last_update
             description: '{{ doc("actor__last_update") }}'
 
       - name: address
+        description: '{{ doc("address") }}'
         columns:
           - name: address_id
             description: '{{ doc("address__address_id") }}'
@@ -49,10 +52,17 @@ sources:
             description: '{{ doc("address__last_update") }}'
 
       - name: category
+        description: '{{ doc("category") }}'
         columns:
           - name: category_id
+            description: '{{ doc("category__category_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: name
+            description: '{{ doc("category__name") }}'
           - name: last_update
+            description: '{{ doc("category__last_update") }}'
 
       - name: city
         columns:

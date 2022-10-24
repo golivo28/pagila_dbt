@@ -1,4 +1,17 @@
+# pagila
+
+{% docs pagila %}
+Pagila is a sample PostgreSQL database based on MySQL's Sakila.
+It's a movie rental database with actors, ratings, payments, etc.
+
+![pagila ER diagram](assets/pagila.png)
+{% enddocs %}
+
 # actor
+
+{% docs actor %}
+This table contains information about actors.
+{% enddocs%}
 
 {% docs actor__actor_id %}
 This is the primary key of the table.
@@ -18,6 +31,11 @@ It's in the format yyyy-mm-dd hh:mm:ss
 {% enddocs %}
 
 # address
+
+{% docs address %}
+This table contains all of the addresses pertaining to customers,
+staff and stores.
+{% enddocs %}
 
 {% docs address__address_id %}
 This is the primary key of the table.
@@ -54,11 +72,22 @@ It's in the format yyyy-mm-dd hh:mm:ss
 
 # category
 
+{% docs category %}
+This table contains the different movie categories available 
+in the database.
+{% enddocs %}
+
 {% docs category__category_id %}
+This is the primary key of the table.
 {% enddocs %}
+
 {% docs category__name %}
+This is the name of the category.
 {% enddocs %}
+
 {% docs category__last_update %}
+This is the timestamp of the last time the table was updated.
+It's in the format yyyy-mm-dd hh:mm:ss
 {% enddocs %}
 
 # city
