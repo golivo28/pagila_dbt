@@ -1,17 +1,37 @@
-{% macro generate_doc_blocks(model_name, doc_blocks_for_sources, doc_blocks_for_models, doc_blocks_for_seeds) %}
+{% macro generate_source_doc_blocks(
+                             source_name="",
+                             tables=[]
+                             ) %}
     {% if execute %}
-        
 
-        {% set sources_list = [] %}
+        {% do print("# " ~ source_name ~ "\n") %}
 
-        {% for node in graph.sources.values() %}
-            {% for column_name in node.columns %}
-                {% do print("{% docs " ~ node.name ~ "__" ~ column_name ~ " %}") %}
-                {% do print("{% enddocs %}") %}
-            {% endfor %}
+        {% do print("{% docs " ~ source_name ~ " %}") %}
+                        
+        {% do print("{% enddocs %}" ~ "\n") %}
+
+        {% for node in graph.sources.values() | selectattr("source_name", "equalto", source_name) %}
+                
+                {% if node.name in tables %}
+                
+                    {% do print("## " ~ node.name ~ "\n") %}
+
+                    {% do print("{% docs " ~ node.name ~ " %}") %}
+                        
+                    {% do print("{% enddocs %}" ~ "\n") %}
+
+                    {% for column_name in node.columns %}
+
+                        {% do print("{% docs " ~ node.name ~ "__" ~ column_name ~ " %}") %}
+                        
+                        {% do print("{% enddocs %}" ~ "\n") %}
+
+                    {% endfor %}
+
+                {% endif%}
+
         {% endfor %}
-            
-        
+                   
     {% endif %}
 
 {% endmacro %}

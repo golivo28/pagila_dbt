@@ -92,13 +92,26 @@ It's in the format yyyy-mm-dd hh:mm:ss
 
 # city
 
+{% docs city %}
+This table contains information about the cities in which
+stores, customers and staff are located.
+{% enddocs%}
+
 {% docs city__city_id %}
+This is the primary key of the table.
 {% enddocs %}
+
 {% docs city__city %}
+This is the name of the city.
 {% enddocs %}
+
 {% docs city__country_id %}
+This is the id of the country in which the city is located.
 {% enddocs %}
+
 {% docs city__last_update %}
+This is the timestamp of the last time the table was updated.
+It's in the format yyyy-mm-dd hh:mm:ss
 {% enddocs %}
 
 # country
