@@ -85,10 +85,19 @@ sources:
             description: '{{ doc("city__last_update") }}'
 
       - name: country
+        description: '{{ doc("country") }}'
         columns:
           - name: country_id
+            description: '{{ doc("country__country_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: country
+            description: '{{ doc("country__country") }}'
+            tests:
+              - not_null
           - name: last_update
+            description: '{{ doc("country__last_update")}}'
 
       - name: customer
         columns:

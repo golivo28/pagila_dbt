@@ -2,6 +2,7 @@
 
 {% docs pagila %}
 Pagila is a sample PostgreSQL database based on MySQL's Sakila.
+
 It's a movie rental database with actors, ratings, payments, etc.
 
 ![pagila ER diagram](assets/pagila.png)
@@ -10,11 +11,14 @@ It's a movie rental database with actors, ratings, payments, etc.
 # actor
 
 {% docs actor %}
-This table contains information about actors.
+This table contains information about actors who appear
+in the movies available in the database.
 {% enddocs%}
 
 {% docs actor__actor_id %}
 This is the primary key of the table.
+
+Autoincremental ID starting by 1 and increasing by 1.
 {% enddocs %}
 
 {% docs actor__first_name %}
@@ -27,7 +31,8 @@ This is the last name of the actor.
 
 {% docs actor__last_update %}
 This is the timestamp of the last time the table was updated.
-It's in the format yyyy-mm-dd hh:mm:ss
+
+It's in the format `yyyy-mm-dd hh:mm:ss`
 {% enddocs %}
 
 # address
@@ -39,14 +44,22 @@ staff and stores.
 
 {% docs address__address_id %}
 This is the primary key of the table.
+
+Autoincremental ID starting by 1 and increasing by 1.
 {% enddocs %}
 
 {% docs address__address %}
-This is the address.
+This is the address in the following format:
+
+{street number} {street name}
+
+In other words, this is the address line 1.
 {% enddocs %}
 
 {% docs address__address2 %}
-This is the address2.
+This is the address line 2.
+
+It may be null or an empty string when not provided.
 {% enddocs %}
 
 {% docs address__district %}
@@ -55,6 +68,8 @@ This is the district where the address is located.
 
 {% docs address__city_id %}
 This is the id of the city in which the address is located.
+
+It's a foreign key that references the city table.
 {% enddocs %}
 
 {% docs address__postal_code %}
@@ -67,7 +82,8 @@ This is the phone related to the address.
 
 {% docs address__last_update %}
 This is the timestamp of the last time the table was updated.
-It's in the format yyyy-mm-dd hh:mm:ss
+
+It's in the format `yyyy-mm-dd hh:mm:ss`
 {% enddocs %}
 
 # category
@@ -79,6 +95,8 @@ in the database.
 
 {% docs category__category_id %}
 This is the primary key of the table.
+
+Autoincremental ID starting by 1 and increasing by 1.
 {% enddocs %}
 
 {% docs category__name %}
@@ -87,7 +105,8 @@ This is the name of the category.
 
 {% docs category__last_update %}
 This is the timestamp of the last time the table was updated.
-It's in the format yyyy-mm-dd hh:mm:ss
+
+It's in the format `yyyy-mm-dd hh:mm:ss`
 {% enddocs %}
 
 # city
@@ -99,28 +118,49 @@ stores, customers and staff are located.
 
 {% docs city__city_id %}
 This is the primary key of the table.
+
+Autoincremental ID starting by 1 and increasing by 1.
 {% enddocs %}
 
 {% docs city__city %}
-This is the name of the city.
+This is the name of the city in which stores, customers and 
+staff are located.
 {% enddocs %}
 
 {% docs city__country_id %}
 This is the id of the country in which the city is located.
+
+It's a foreign key that references the country table.
 {% enddocs %}
 
 {% docs city__last_update %}
 This is the timestamp of the last time the table was updated.
-It's in the format yyyy-mm-dd hh:mm:ss
+
+It's in the format `yyyy-mm-dd hh:mm:ss`
 {% enddocs %}
 
 # country
 
+{% docs country %}
+This table contains information about the countries in which 
+stores, customers and staff are located.
+{% enddocs %}
+
 {% docs country__country_id %}
+This is the primary key of the table.
+
+Autoincremental ID starting by 1 and increasing by 1.
 {% enddocs %}
+
 {% docs country__country %}
+This is the name of the country in which stores, customers
+and staff are located.
 {% enddocs %}
+
 {% docs country__last_update %}
+This is the timestamp of the last time the table was updated.
+
+It's in the format `yyyy-mm-dd hh:mm:ss`
 {% enddocs %}
 
 # customer
