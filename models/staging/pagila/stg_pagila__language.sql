@@ -1,14 +1,14 @@
 with source as (
 
-    select * from {{ source('pagila', 'category') }}
+    select * from {{ source('pagila', 'language') }}
 
 ),
 
 renamed as (
 
     select
-        category_id,
-        name as category_name,
+        language_id,
+        name as language_name,
         last_update
 
     from source

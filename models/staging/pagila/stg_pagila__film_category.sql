@@ -1,14 +1,14 @@
 with source as (
 
-    select * from {{ source('pagila', 'category') }}
+    select * from {{ source('pagila', 'film_category') }}
 
 ),
 
 renamed as (
 
     select
+        film_id,
         category_id,
-        name as category_name,
         last_update
 
     from source

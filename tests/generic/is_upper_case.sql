@@ -1,4 +1,3 @@
--- assert if the actor's first name is upper case
 {% test is_upper_case(model, column_name) %}
 
     select *

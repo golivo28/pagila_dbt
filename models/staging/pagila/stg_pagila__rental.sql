@@ -1,14 +1,18 @@
 with source as (
 
-    select * from {{ source('pagila', 'category') }}
+    select * from {{ source('pagila', 'rental') }}
 
 ),
 
 renamed as (
 
     select
-        category_id,
-        name as category_name,
+        rental_id,
+        rental_date,
+        inventory_id,
+        customer_id,
+        return_date,
+        staff_id,
         last_update
 
     from source

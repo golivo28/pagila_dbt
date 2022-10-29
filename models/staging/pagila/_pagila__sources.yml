@@ -100,96 +100,287 @@ sources:
             description: '{{ doc("country__last_update")}}'
 
       - name: customer
+        description: '{{ doc("customer")}}'
         columns:
           - name: customer_id
+            description: '{{ doc("customer__customer_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: store_id
+            description: '{{ doc("customer__store_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "store") }}'
+                  field: store_id
           - name: first_name
+            description: '{{ doc("customer__first_name") }}'
+            tests:
+              - is_upper_case
           - name: last_name
+            description: '{{ doc("customer__last_name") }}'
+            tests:
+              - is_upper_case
           - name: email
+            description: '{{ doc("customer__email") }}'
           - name: address_id
+            description: '{{ doc("customer__address_id") }}'
+            tests:
+              - relationships:
+                  to: '{{ source("pagila", "address") }}'
+                  field: address_id
           - name: activebool
+            description: '{{ doc("customer__activebool") }}'
           - name: create_date
+            description: '{{ doc("customer__create_date") }}'
           - name: last_update
+            description: '{{ doc("customer__last_update") }}'
           - name: active
+            description: '{{ doc("customer__active") }}'
 
       - name: film
+        description: '{{ doc("film") }}'
         columns:
           - name: film_id
+            description: '{{ doc("film__film_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: title
+            description: '{{ doc("film__title") }}'
+            tests:
+              - not_null
+              - unique
           - name: description
+            description: '{{ doc("film__description") }}'
           - name: release_year
+            description: '{{ doc("film__release_year") }}'
           - name: language_id
+            description: '{{ doc("film__language_id") }}'
           - name: original_language_id
+            description: '{{ doc("film__original_language_id") }}'
           - name: rental_duration
+            description: '{{ doc("film__rental_duration") }}'
           - name: rental_rate
+            description: '{{ doc("film__rental_rate") }}'
+            tests:
+              - is_greater_than_zero
           - name: length
+            description: '{{ doc("film__length") }}'
           - name: replacement_cost
+            description: '{{ doc("film__replacement_cost") }}'
           - name: rating
+            description: '{{ doc("film__rating") }}'
           - name: last_update
+            description: '{{ doc("film__last_update") }}'
           - name: special_features
+            description: '{{ doc("film__special_features") }}'
           - name: fulltext
+            description: '{{ doc("film__fulltext") }}'
 
       - name: film_actor
+        description: '{{ doc("film_actor") }}'
         columns:
           - name: actor_id
+            description: '{{ doc("film_actor__actor_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "actor") }}'
+                  field: actor_id
           - name: film_id
+            description: '{{ doc("film_actor__film_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila","film") }}'
+                  field: film_id
           - name: last_update
+            description: '{{ doc("film_actor__last_update") }}'
 
       - name: film_category
+        description: '{{ doc("film_category") }}'
         columns:
           - name: film_id
+            description: '{{ doc("film_category__film_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "film") }}'
+                  field: film_id
           - name: category_id
+            description: '{{ doc("film_category__category_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "category") }}'
+                  field: category_id
           - name: last_update
+            description: '{{ doc("film_category__last_update") }}'
 
       - name: inventory
+        description: '{{ doc("inventory") }}'
         columns:
           - name: inventory_id
+            description: '{{ doc("inventory__inventory_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: film_id
+            description: '{{ doc("inventory__film_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "film") }}'
+                  field: film_id
           - name: store_id
+            description: '{{ doc("inventory__store_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "store") }}'
+                  field: store_id
           - name: last_update
+            description: '{{ doc("inventory__last_update") }}'
 
       - name: language
+        description: '{{ doc("language") }}'
         columns:
           - name: language_id
+            description: '{{ doc("language__language_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: name
+            description: '{{ doc("language__name") }}'
+            tests:
+              - not_null
+              - unique
           - name: last_update
+            description: '{{ doc("language__last_update") }}'
 
       - name: payment
+        description: '{{ doc("payment") }}'
         columns:
           - name: payment_id
+            description: '{{ doc("payment__payment_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: customer_id
+            description: '{{ doc("payment__customer_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "customer") }}'
+                  field: customer_id
           - name: staff_id
+            description: '{{ doc("payment__staff_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "staff") }}'
+                  field: staff_id
           - name: rental_id
+            description: '{{ doc("payment__rental_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila","rental") }}'
+                  field: rental_id
           - name: amount
+            description: '{{ doc("payment__amount") }}'
+            tests:
+              - is_greater_than_zero
           - name: payment_date
+            description: '{{ doc("payment__payment_date") }}'
 
       - name: rental
+        description: '{{ doc("rental") }}'
         columns:
           - name: rental_id
+            description: '{{ doc("rental__rental_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: rental_date
+            description: '{{ doc("rental__rental_date") }}'
           - name: inventory_id
+            description: '{{ doc("rental__inventory_id") }}'
           - name: customer_id
+            description: '{{ doc("rental__customer_id") }}'
           - name: return_date
+            description: '{{ doc("rental__return_date") }}'
           - name: staff_id
+            description: '{{ doc("rental__staff_id") }}'
           - name: last_update
+            description: '{{ doc("rental__last_update") }}'
 
       - name: staff
+        description: '{{ doc("staff") }}'
         columns:
           - name: staff_id
+            description: '{{ doc("staff__staff_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: first_name
+            description: '{{ doc("staff__first_name") }}'
+            tests:
+              - is_capitalized
           - name: last_name
+            description: '{{ doc("staff__last_name") }}'
+            tests:
+              - is_capitalized
           - name: address_id
+            description: '{{ doc("staff__address_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "address") }}'
+                  field: address_id
           - name: email
+            description: '{{ doc("staff__email") }}'
           - name: store_id
+            description: '{{ doc("staff__store_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "store") }}'
+                  field: store_id
           - name: active
+            description: '{{ doc("staff__active") }}'
           - name: username
+            description: '{{ doc("staff__username") }}'
           - name: password
+            description: '{{ doc("staff__password") }}'
           - name: last_update
+            description: '{{ doc("staff__last_update") }}'
           - name: picture
+            description: '{{ doc("staff__picture") }}'
 
       - name: store
+        description: '{{ doc("store") }}'
         columns:
           - name: store_id
+            description: '{{ doc("store__store_id") }}'
+            tests:
+              - not_null
+              - unique
           - name: manager_staff_id
+            description: '{{ doc("store__manager_staff_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "staff") }}'
+                  field: staff_id
           - name: address_id
+            description: '{{ doc("store__address_id") }}'
+            tests:
+              - not_null
+              - relationships:
+                  to: '{{ source("pagila", "address") }}'
+                  field: address_id
           - name: last_update
+            description: '{{ doc("store__last_update") }}'
