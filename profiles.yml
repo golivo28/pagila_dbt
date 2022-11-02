@@ -13,6 +13,18 @@ pagila:
       keepalives_idle: 0 # default 0, indicating the system default. See below
       connect_timeout: 10 # default 10 seconds
       retries: 1  # default 1 retry on error/timeout when opening connections
+    ci:
+      type: postgres
+      host: "{{ env_var('DBT_ENV_HOST') }}"
+      user: "{{ env_var('DBT_ENV_USER') }}"
+      password: "{{ env_var('DBT_ENV_SECRET_PASSWORD') }}"
+      port: 5432
+      dbname: postgres
+      schema: dbt_gregory
+      threads: 1
+      keepalives_idle: 0 # default 0, indicating the system default. See below
+      connect_timeout: 10 # default 10 seconds
+      retries: 1  # default 1 retry on error/timeout when opening connections
     prod:
       type: postgres
       host: "{{ env_var('DBT_ENV_HOST') }}"
