@@ -24,3 +24,10 @@ models:
   pagila:
       staging:
         +materialized: view
+
+tests:
+  dbt_project_evaluator:
+    +severity: |
+      {%- if target.name == "ci" -%} error
+      {%- else -%} warn
+      {%- endif -%}
