@@ -3,8 +3,8 @@ pagila:
   outputs:
     dev:
       type: postgres
-      host: "0.0.0.0"
-      user: gregory
+      host: "{{ env_var('DBT_ENV_HOST') }}"
+      user: "{{ env_var('DBT_ENV_USER') }}"
       password: "{{ env_var('DBT_ENV_SECRET_PASSWORD') }}"
       port: 5432
       dbname: postgres
@@ -15,8 +15,8 @@ pagila:
       retries: 1  # default 1 retry on error/timeout when opening connections
     prod:
       type: postgres
-      host: "0.0.0.0"
-      user: gregory
+      host: "{{ env_var('DBT_ENV_HOST') }}"
+      user: "{{ env_var('DBT_ENV_USER') }}"
       password: "{{ env_var('DBT_ENV_SECRET_PASSWORD') }}"
       port: 5432
       dbname: postgres
