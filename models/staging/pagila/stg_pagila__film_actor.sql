@@ -12,9 +12,6 @@ renamed as (
         last_update
 
     from source
-    {% if target.name == 'dev' %}
-    limit 10
-    {% endif %}
 
 )
 

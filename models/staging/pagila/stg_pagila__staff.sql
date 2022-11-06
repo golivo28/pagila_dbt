@@ -20,10 +20,7 @@ renamed as (
         picture
 
     from source
-    {% if target.name == 'dev' %}
-    limit 10
-    {% endif %}
-
+    
 )
 
 select * from renamed

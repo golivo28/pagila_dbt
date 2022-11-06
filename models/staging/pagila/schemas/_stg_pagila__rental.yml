@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_pagila__rental
+    description: '{{ doc("rental") }}'
+    columns:
+      - name: rental_id
+        description: '{{ doc("rental__rental_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: rental_date
+        description: '{{ doc("rental__rental_date") }}'
+
+      - name: inventory_id
+        description: '{{ doc("rental__inventory_id") }}'
+        tests:
+          - not_null
+          - relationships:
+              to: '{{ ref("stg_pagila__inventory") }}'
+              field: inventory_id
+
+      - name: customer_id
+        description: '{{ doc("rental__customer_id") }}'
+        tests:
+          - not_null
+          - relationships:
+              to: '{{ ref("stg_pagila__customer") }}'
+              field: customer_id
+
+      - name: return_date
+        description: '{{ doc("rental__return_date") }}'
+
+      - name: staff_id
+        description: '{{ doc("rental__staff_id") }}'
+        tests:
+          - not_null
+          - relationships:
+              to: '{{ ref("stg_pagila__staff") }}'
+              field: staff_id
+
+      - name: last_update
+        description: '{{ doc("rental__last_update") }}'
+
+      - name: _loaded_at
+        description: '{{ doc("_loaded_at") }}'

@@ -8,6 +8,12 @@ It's a movie rental database with actors, ratings, payments, etc.
 ![pagila ER diagram](assets/pagila.png)
 {% enddocs %}
 
+# common to all tables
+
+{% docs _loaded_at %}
+Timestamp generated at load time.
+{% enddocs%}
+
 # actor
 
 {% docs actor %}

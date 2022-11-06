@@ -12,11 +12,12 @@ renamed as (
         staff_id,
         rental_id,
         amount,
-        payment_date
+        payment_date,
+        _loaded_at
 
     from source
     {% if target.name == 'dev' %}
-    limit 10
+    where _loaded_at between now() and now() - interval '15 days'
     {% endif %}
 
 )

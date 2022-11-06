@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_pagila__actor
+    description: '{{ doc("actor") }}'
+    columns:
+      - name: actor_id
+        description: '{{ doc("actor__actor_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: actor_first_name
+        description: '{{ doc("actor__first_name") }}'
+        tests:
+              - is_upper_case
+
+      - name: actor_last_name
+        description: '{{ doc("actor__last_name") }}'
+        tests:
+              - is_upper_case
+
+      - name: last_update
+        description: '{{ doc("actor__last_update") }}'
+

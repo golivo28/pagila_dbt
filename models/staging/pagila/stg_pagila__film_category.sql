@@ -10,11 +10,8 @@ renamed as (
         film_id,
         category_id,
         last_update
-
+        
     from source
-    {% if target.name == 'dev' %}
-    limit 10
-    {% endif %}
 
 )
 

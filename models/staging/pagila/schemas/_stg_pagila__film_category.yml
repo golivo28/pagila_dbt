@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_pagila__film_category
+    description: '{{ doc("film_category") }}'
+    columns:
+      - name: film_id
+        description: '{{ doc("film_category__film_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__film") }}'
+                  field: film_id
+
+      - name: category_id
+        description: '{{ doc("film_category__category_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__category") }}'
+                  field: category_id
+
+      - name: last_update
+        description: '{{ doc("film_category__last_update") }}'

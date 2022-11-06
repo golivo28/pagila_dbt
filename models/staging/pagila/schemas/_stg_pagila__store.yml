@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_pagila__store
+    description: '{{ doc("store") }}'
+    columns:
+      - name: store_id
+        description: '{{ doc("store__store_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: manager_staff_id
+        description: '{{ doc("store__manager_staff_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__staff") }}'
+                  field: staff_id
+
+      - name: address_id
+        description: '{{ doc("store__address_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__address") }}'
+                  field: address_id
+
+      - name: last_update
+        description: '{{ doc("store__last_update") }}'
+        

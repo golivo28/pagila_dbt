@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_pagila__inventory
+    description: '{{ doc("inventory") }}'
+    columns:
+      - name: inventory_id
+        description: '{{ doc("inventory__inventory_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: film_id
+        description: '{{ doc("inventory__film_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__film") }}'
+                  field: film_id
+
+      - name: store_id
+        description: '{{ doc("inventory__store_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__store") }}'
+                  field: store_id
+
+      - name: last_update
+        description: '{{ doc("inventory__last_update") }}'

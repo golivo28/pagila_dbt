@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: stg_pagila__film
+    description: '{{ doc("film") }}'
+    columns:
+      - name: film_id
+        description: '{{ doc("film__film_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: title
+        description: '{{ doc("film__title") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: description
+        description: '{{ doc("film__description") }}'
+
+      - name: release_year
+        description: '{{ doc("film__release_year") }}'
+
+      - name: language_id
+        description: '{{ doc("film__language_id") }}'
+        tests:
+          - not_null
+          - relationships:
+              to: '{{ ref("stg_pagila__language") }}'
+              field: language_id
+
+      - name: original_language_id
+        description: '{{ doc("film__original_language_id") }}'
+
+      - name: rental_duration
+        description: '{{ doc("film__rental_duration") }}'
+
+      - name: rental_rate
+        description: '{{ doc("film__rental_rate") }}'
+        tests:
+              - is_greater_than_zero
+
+      - name: length
+        description: '{{ doc("film__length") }}'
+
+      - name: replacement_cost
+        description: '{{ doc("film__replacement_cost") }}'
+
+      - name: rating
+        description: '{{ doc("film__rating") }}'
+
+      - name: last_update
+        description: '{{ doc("film__last_update") }}'
+
+      - name: special_features
+        description: '{{ doc("film__special_features") }}'
+
+      - name: fulltext
+        description: '{{ doc("film__fulltext") }}'

@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_pagila__payment
+    description: '{{ doc("payment") }}'
+    columns:
+      - name: payment_id
+        description: '{{ doc("payment__payment_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: customer_id
+        description: '{{ doc("payment__customer_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__customer") }}'
+                  field: customer_id
+
+      - name: staff_id
+        description: '{{ doc("payment__staff_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__staff") }}'
+                  field: staff_id
+
+      - name: rental_id
+        description: '{{ doc("payment__rental_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__rental") }}'
+                  field: rental_id
+
+      - name: amount
+        description: '{{ doc("payment__amount") }}'
+
+      - name: payment_date
+        description: '{{ doc("payment__payment_date") }}'
+
+      - name: _loaded_at
+        description: '{{ doc("_loaded_at") }}'

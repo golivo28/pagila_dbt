@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_pagila__staff
+    description: '{{ doc("staff") }}'
+    columns:
+      - name: staff_id
+        description: '{{ doc("staff__staff_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: staff_first_name
+        description: '{{ doc("staff__first_name") }}'
+        tests:
+              - is_capitalized
+
+      - name: staff_last_name
+        description: '{{ doc("staff__last_name") }}'
+        tests:
+              - is_capitalized
+
+      - name: address_id
+        description: '{{ doc("staff__address_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__address") }}'
+                  field: address_id
+
+      - name: email
+        description: '{{ doc("staff__email") }}'
+
+      - name: store_id
+        description: '{{ doc("staff__store_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__store") }}'
+                  field: store_id
+
+      - name: staff_active
+        description: '{{ doc("staff__active") }}'
+
+      - name: username
+        description: '{{ doc("staff__username") }}'
+
+      - name: password
+        description: '{{ doc("staff__password") }}'
+
+      - name: last_update
+        description: '{{ doc("staff__last_update") }}'
+
+      - name: picture
+        description: '{{ doc("staff__picture") }}'

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_pagila__city
+    description: '{{ doc("city") }}'
+    columns:
+      - name: city_id
+        description: '{{ doc("city__city_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: city
+        description: '{{ doc("city__city") }}'
+        
+      - name: country_id
+        description: '{{ doc("city__country_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__country") }}'
+                  field: country_id
+
+      - name: last_update
+        description: '{{ doc("city__last_update") }}'

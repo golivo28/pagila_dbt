@@ -23,9 +23,6 @@ renamed as (
         fulltext
 
     from source
-    {% if target.name == 'dev' %}
-    limit 10
-    {% endif%}
 
 )
 

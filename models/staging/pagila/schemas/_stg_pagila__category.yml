@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_pagila__category
+    description: '{{ doc("category") }}'
+    columns:
+      - name: category_id
+        description: '{{ doc("category__category_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: category_name
+        description: '{{ doc("category__name") }}'
+
+      - name: last_update
+        description: '{{ doc("category__last_update") }}'

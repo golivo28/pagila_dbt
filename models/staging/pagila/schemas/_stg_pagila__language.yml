@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_pagila__language
+    description: '{{ doc("language") }}'
+    columns:
+      - name: language_id
+        description: '{{ doc("language__language_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: language_name
+        description: '{{ doc("language__name") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: last_update
+        description: '{{ doc("language__last_update") }}'

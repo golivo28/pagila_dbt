@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_pagila__film_actor
+    description: '{{ doc("film_actor") }}'
+    columns:
+      - name: actor_id
+        description: '{{ doc("film_actor__actor_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__actor") }}'
+                  field: actor_id
+
+      - name: film_id
+        description: '{{ doc("film_actor__film_id") }}'
+        tests:
+              - not_null
+              - relationships:
+                  to: '{{ ref("stg_pagila__film") }}'
+                  field: film_id
+
+      - name: last_update
+        description: '{{ doc("film_actor__last_update") }}'

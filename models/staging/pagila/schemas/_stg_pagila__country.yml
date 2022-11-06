@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_pagila__country
+    description: '{{ doc("country") }}'
+    columns:
+      - name: country_id
+        description: '{{ doc("country__country_id") }}'
+        tests:
+              - not_null
+              - unique
+
+      - name: country_name
+        description: '{{ doc("country__country") }}'
+        tests:
+              - not_null
+
+      - name: last_update
+        description: '{{ doc("country__last_update")}}'
