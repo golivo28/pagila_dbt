@@ -22,8 +22,14 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
   pagila:
-      staging:
-        +materialized: view
+    staging:
+      +materialized: view
+  dbt_project_evaluator:
+    marts:
+      structure:
+        fct_test_directories:
+          +enabled: false
+
 
 tests:
   dbt_project_evaluator:
@@ -31,3 +37,8 @@ tests:
       {%- if target.name == "ci" -%} error
       {%- else -%} warn
       {%- endif -%}
+
+seeds:
+  dbt_project_evaluator:
+    dbt_project_evaluator_exceptions:
+      +enabled: false
