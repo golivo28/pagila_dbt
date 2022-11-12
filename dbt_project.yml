@@ -24,6 +24,13 @@ models:
   pagila:
     staging:
       +materialized: view
+    intermediate:
+      +materialized: view
+      +schema: |
+        {%- if target.name == "prod" -%} intermediates
+        {%- endif -%}
+      rental:
+        +tags: [rental]
   dbt_project_evaluator:
     marts:
       structure:
