@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_pagila__rentals_and_payments_joined
+    description: "{{ doc('int_pagila__rentals_and_payments_joined') }}"
+    columns:
+      - name: rental_id
+        description: "{{ doc('int_pagila__rentals_and_payments_joined__rental_id') }}"
+
+      - name: rental_date
+        description: "{{ doc('int_pagila__rentals_and_payments_joined__rental_date') }}"
+
+      - name: inventory_id
+        description: "{{ doc('int_pagila__rentals_and_payments_joined__inventory_id') }}"
+
+      - name: customer_id
+        description: "{{ doc('int_pagila__rentals_and_payments_joined__customer_id') }}"
+
+      - name: amount
+        description: "{{ doc('int_pagila__rentals_and_payments_joined__amount') }}"
