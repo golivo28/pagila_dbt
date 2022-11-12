@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: int_pagila__countries_and_cities_joined
+    description: "{ doc('int_pagila__countries_and_cities_joined') }}"
+    columns:
+      - name: city_id
+        description: "{{ doc('int_pagila__countries_and_cities_joined__city_id') }}"
+
+      - name: city
+        description: "{{ doc('int_pagila__countries_and_cities_joined__city') }}"
+
+      - name: country_name
+        description: "{{ doc('int_pagila__countries_and_cities_joined__country_name') }}"
