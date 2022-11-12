@@ -17,7 +17,7 @@ renamed as (
 
     from source
     {% if target.name == 'dev' %}
-    where _loaded_at between now() and now() - interval '15 days'
+        where _loaded_at between (now() - interval '365 days') and now()
     {% endif %}
 
 )
