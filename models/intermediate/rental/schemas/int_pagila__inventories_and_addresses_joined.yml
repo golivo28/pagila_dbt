@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_pagila__inventories_and_addresses_joined
+    description: "{{ doc('int_pagila__inventories_and_addresses_joined') }}"
+    columns:
+      - name: inventory_id
+        description: "{{ doc('int_pagila__inventories_and_addresses_joined__inventory_id') }}"
+
+      - name: address_id
+        description: "{{ doc('int_pagila__inventories_and_addresses_joined__address_id') }}"
