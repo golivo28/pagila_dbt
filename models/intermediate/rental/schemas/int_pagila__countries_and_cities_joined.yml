@@ -6,9 +6,16 @@ models:
     columns:
       - name: city_id
         description: "{{ doc('int_pagila__countries_and_cities_joined__city_id') }}"
+        tests:
+          - unique
+          - not_null
 
       - name: city
         description: "{{ doc('int_pagila__countries_and_cities_joined__city') }}"
+        tests:
+          - not_null
 
       - name: country_name
         description: "{{ doc('int_pagila__countries_and_cities_joined__country_name') }}"
+        tests:
+          - not_null
